@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 添加 apps 目录
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -207,10 +208,10 @@ REST_FRAMEWORK = {
 }
 
 # 配置数据库
-MYSQL_HOST = os.getenv('IZONE_MYSQL_HOST', '127.0.0.1')
+MYSQL_HOST = os.getenv('IZONE_MYSQL_HOST', '192.168.152.131')
 MYSQL_NAME = os.getenv('IZONE_MYSQL_NAME', 'izone')
 MYSQL_USER = os.getenv('IZONE_MYSQL_USER', 'root')
-MYSQL_PASSWORD = os.getenv('IZONE_MYSQL_PASSWORD', 'python')
+MYSQL_PASSWORD = os.getenv('IZONE_MYSQL_PASSWORD', '123456')
 MYSQL_PORT = os.getenv('IZONE_MYSQL_PORT', 3306)
 
 DATABASES = {
@@ -226,7 +227,7 @@ DATABASES = {
 }
 
 # 使用django-redis缓存页面，缓存配置如下：
-REDIS_HOST = os.getenv('IZONE_REDIS_HOST', '127.0.0.1')
+REDIS_HOST = os.getenv('IZONE_REDIS_HOST', '192.168.152.131')
 REDIS_PORT = os.getenv('IZONE_REDIS_PORT', 6379)
 
 CACHES = {
