@@ -106,5 +106,6 @@ media/
 !media/avatar/default.png
 static/
 
+
 # jieba
 .DS_Store

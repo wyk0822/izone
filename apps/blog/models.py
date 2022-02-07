@@ -72,13 +72,13 @@ class Article(models.Model):
     title = models.CharField(max_length=150, verbose_name='文章标题')
     summary = models.TextField('文章摘要', max_length=230, default='文章摘要等同于网页description内容，请务必填写...')
     body = models.TextField(verbose_name='文章内容')
-    img_link = models.CharField('图片地址', default=IMG_LINK, max_length=255)
+    # img_link = models.CharField('图片地址', default=IMG_LINK, max_length=255)
     create_date = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
     update_date = models.DateTimeField(verbose_name='修改时间', auto_now=True)
     views = models.IntegerField('阅览量', default=0)
     slug = models.SlugField(unique=True)
     is_top = models.BooleanField('置顶', default=False)
-
+    img_link = models.ImageField('图片地址', upload_to='blog', default=IMG_LINK, max_length=255)
     category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, verbose_name='标签')
     keywords = models.ManyToManyField(Keyword, verbose_name='文章关键词',
