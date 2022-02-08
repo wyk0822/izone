@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('IZONE_SECRET_KEY', '#!kta!9e0)24d@9#=*=ra$r!0k0+p5@w+a%7
 # 是否开启[在线工具]应用
 TOOL_FLAG = os.getenv('IZONE_TOOL_FLAG', 'True').upper() == 'TRUE'
 # 是否开启[API]应用
-API_FLAG = os.getenv('IZONE_API_FLAG', 'False').upper() == 'TRUE'
+API_FLAG = os.getenv('IZONE_API_FLAG', 'True').upper() == 'TRUE'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('IZONE_DEBUG', 'True').upper() == 'TRUE'
@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.weibo',
     'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.weixin',
 
     'rest_framework',
 
@@ -97,7 +98,7 @@ LOGIN_REDIRECT_URL = "/"
 # Email setting
 # 注册中邮件验证方法:“强制（mandatory）”,“可选（optional）【默认】”或“否（none）”之一。
 # 开启邮箱验证的话，如果邮箱配置不可用会报错，所以默认关闭，根据需要自行开启
-ACCOUNT_EMAIL_VERIFICATION = os.getenv('IZONE_ACCOUNT_EMAIL_VERIFICATION', 'none')
+ACCOUNT_EMAIL_VERIFICATION = os.getenv('IZONE_ACCOUNT_EMAIL_VERIFICATION', 'optional')
 # 登录方式，选择用户名或者邮箱都能登录
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # 设置用户注册的时候必须填写邮箱地址
@@ -242,7 +243,7 @@ CACHES = {
 
 # 配置管理邮箱，服务出现故障会收到到邮件，环境变量值的格式：name|test@test.com 多组用户用英文逗号隔开
 ADMINS = []
-admin_email_user = os.getenv('IZONE_ADMIN_EMAIL_USER')
+admin_email_user = os.getenv('IZONE_ADMIN_EMAIL_USER', "root|18733181565@163.com")
 if admin_email_user:
     for each in admin_email_user.split(','):
         a_user, a_email = each.split('|')
@@ -250,14 +251,14 @@ if admin_email_user:
 
 # 邮箱配置
 EMAIL_HOST = os.getenv('IZONE_EMAIL_HOST', 'smtp.163.com')
-EMAIL_HOST_USER = os.getenv('IZONE_EMAIL_HOST_USER', 'your-email-address')
-EMAIL_HOST_PASSWORD = os.getenv('IZONE_EMAIL_HOST_PASSWORD', 'your-email-password')  # 这个不是邮箱密码，而是授权码
+EMAIL_HOST_USER = os.getenv('IZONE_EMAIL_HOST_USER', '18733181565@163.com')
+EMAIL_HOST_PASSWORD = os.getenv('IZONE_EMAIL_HOST_PASSWORD', 'NRPXXYCEZLFIJFYD')  # 这个不是邮箱密码，而是授权码
 EMAIL_PORT = os.getenv('IZONE_EMAIL_PORT', 465)  # 由于阿里云的25端口打不开，所以必须使用SSL然后改用465端口
 EMAIL_TIMEOUT = 5
 # 是否使用了SSL 或者TLS，为了用465端口，要使用这个
 EMAIL_USE_SSL = os.getenv('IZONE_EMAIL_USE_SSL', 'True').upper() == 'TRUE'
 # 默认发件人，不设置的话django默认使用的webmaster@localhost，所以要设置成自己可用的邮箱
-DEFAULT_FROM_EMAIL = os.getenv('IZONE_DEFAULT_FROM_EMAIL', 'TendCode博客 <your-email-address>')
+DEFAULT_FROM_EMAIL = os.getenv('IZONE_DEFAULT_FROM_EMAIL', 'TendCode博客 <18733181565@163.com>')
 
 # 网站默认设置和上下文信息
 SITE_LOGO_NAME = os.getenv('IZONE_LOGO_NAME', 'TendCode')

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wangEditor example</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <p>
+        wangEditor demo
+    </p>
+    <button onclick=getTxt()>获取文本</button>
+    <div id="div1">
+        <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+    </div>
+
+    <script src="{% static 'wangeditor/wangEditor.js'%}"></script>
+    <script>
+
+        const E = window.wangEditor
+        const editor = new E('#div1')
+        function getTxt(){
+            alert("去控制台中复制文本")
+            console.log(editor.txt.html())
+        }
+        editor.config.focus = false
+
+        editor.config.onfocus = function () {
+            console.log('触发focus事件')
+        }
+        editor.config.onblur = function () {
+            console.log('触发blur事件')
+        }
+        editor.config.uploadImgShowBase64 = true
+        editor.create()
+    </script>
+</body>
+
+</html>

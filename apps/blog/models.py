@@ -67,7 +67,7 @@ class Category(models.Model):
 
 # 文章
 class Article(models.Model):
-    IMG_LINK = '/static/blog/img/summary.png'
+    IMG_LINK = 'blog/summary.png'
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='作者', on_delete=models.PROTECT)
     title = models.CharField(max_length=150, verbose_name='文章标题')
     summary = models.TextField('文章摘要', max_length=230, default='文章摘要等同于网页description内容，请务必填写...')

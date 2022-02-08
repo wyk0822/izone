@@ -128,6 +128,10 @@ def editor_view(request):
     return render(request, 'tool/editor.html')
 
 
+def wang_editor_view(request):
+    return render(request, 'tool/wangeditor.html')
+
+
 # 词云图
 def word_cloud(request):
     if request.is_ajax() and request.method == "POST":
