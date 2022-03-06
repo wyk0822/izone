@@ -4,7 +4,6 @@ from django.shortcuts import reverse
 import markdown
 import re
 
-
 # Create your models here.
 
 # 文章关键词，用来作为SEO中keywords
@@ -78,8 +77,8 @@ class Article(models.Model):
     # img_link = models.CharField('图片地址', default=IMG_LINK, max_length=255)
     create_date = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
     update_date = models.DateTimeField(verbose_name='修改时间', auto_now=True)
-    views = models.IntegerField('阅览量', default=0)
-    slug = models.SlugField(unique=True,default=create_slug, editable=False)
+    views = models.IntegerField('阅览量', default=0, editable=False)
+    slug = models.SlugField(unique=True, default=create_slug, editable=False)
     is_top = models.BooleanField('置顶', default=False)
     img_link = models.ImageField('图片地址', upload_to='blog', default=IMG_LINK, max_length=255)
     category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.PROTECT)
@@ -221,6 +220,7 @@ class FriendLink(models.Model):
         self.is_show = True
         self.save(update_fields=['is_show'])
 
+
 class AboutBlog(models.Model):
     body = models.TextField(verbose_name='About 内容')
     create_date = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
@@ -238,4 +238,3 @@ class AboutBlog(models.Model):
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
         ])
-
