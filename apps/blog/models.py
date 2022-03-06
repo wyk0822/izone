@@ -8,6 +8,9 @@ import re
 # Create your models here.
 
 # 文章关键词，用来作为SEO中keywords
+from apps.blog import create_slug
+
+
 class Keyword(models.Model):
     name = models.CharField('文章关键词', max_length=20)
 
@@ -23,7 +26,7 @@ class Keyword(models.Model):
 # 文章标签
 class Tag(models.Model):
     name = models.CharField('文章标签', max_length=20)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, default=create_slug, editable=False)
     description = models.TextField('描述', max_length=240, default=settings.SITE_DESCRIPTION,
                                    help_text='用来作为SEO中description,长度参考SEO标准')
 
@@ -46,7 +49,7 @@ class Tag(models.Model):
 # 文章分类
 class Category(models.Model):
     name = models.CharField('文章分类', max_length=20)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, default=create_slug, editable=False)
     description = models.TextField('描述', max_length=240, default=settings.SITE_DESCRIPTION,
                                    help_text='用来作为SEO中description,长度参考SEO标准')
 
@@ -76,7 +79,7 @@ class Article(models.Model):
     create_date = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
     update_date = models.DateTimeField(verbose_name='修改时间', auto_now=True)
     views = models.IntegerField('阅览量', default=0)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True,default=create_slug, editable=False)
     is_top = models.BooleanField('置顶', default=False)
     img_link = models.ImageField('图片地址', upload_to='blog', default=IMG_LINK, max_length=255)
     category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.PROTECT)
