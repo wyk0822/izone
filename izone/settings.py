@@ -258,13 +258,13 @@ EMAIL_TIMEOUT = 5
 # 是否使用了SSL 或者TLS，为了用465端口，要使用这个
 EMAIL_USE_SSL = os.getenv('IZONE_EMAIL_USE_SSL', 'True').upper() == 'TRUE'
 # 默认发件人，不设置的话django默认使用的webmaster@localhost，所以要设置成自己可用的邮箱
-DEFAULT_FROM_EMAIL = os.getenv('IZONE_DEFAULT_FROM_EMAIL', 'TendCode博客 <18733181565@163.com>')
+DEFAULT_FROM_EMAIL = os.getenv('IZONE_DEFAULT_FROM_EMAIL', 'Black millet porridge博客 <18733181565@163.com>')
 
 # 网站默认设置和上下文信息
-SITE_LOGO_NAME = os.getenv('IZONE_LOGO_NAME', 'TendCode')
-SITE_END_TITLE = os.getenv('IZONE_SITE_END_TITLE', 'izone')
-SITE_DESCRIPTION = os.getenv('IZONE_SITE_DESCRIPTION', 'izone 是一个使用 Django+Bootstrap4 搭建的个人博客类型网站')
-SITE_KEYWORDS = os.getenv('IZONE_SITE_KEYWORDS', 'izone,Django博客,个人博客')
+SITE_LOGO_NAME = os.getenv('IZONE_LOGO_NAME', 'Black millet porridge')
+SITE_END_TITLE = os.getenv('IZONE_SITE_END_TITLE', 'Black millet porridge')
+SITE_DESCRIPTION = os.getenv('IZONE_SITE_DESCRIPTION', 'Black millet porridge 是一个使用 Django+Bootstrap4 搭建的个人博客类型网站')
+SITE_KEYWORDS = os.getenv('IZONE_SITE_KEYWORDS', 'Black millet porridge,Django博客,个人博客')
 
 # 个性化设置，非必要信息
 # 个人 Github 地址
